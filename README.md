@@ -1,8 +1,19 @@
 # Microsoft Teams Deploy Card
 
-![MS Teams Deploy Card](https://github.com/toko-bifrost/ms-teams-deploy-card/workflows/MS%20Teams%20Deploy%20Card/badge.svg)
+![MS Teams Deploy Card](https://github.com/jjchiw/ms-teams-deploy-card/workflows/MS%20Teams%20Deploy%20Card/badge.svg)
 
 A comprehensive notification card in Microsoft Teams for your deployments.
+
+This is a fork of a fork...
+
+This is the original
+https://github.com/toko-bifrost/ms-teams-deploy-card
+
+Then there was an issue with the notifications [Stays IN_PROGRESS even if SUCCESS or has FAILED](https://github.com/toko-bifrost/ms-teams-deploy-card/issues/42)
+
+So @patrickpaulin make a fork a fix it https://github.com/patrickpaulin/ms-teams-deploy-card
+
+I Just forked and renamed the action
 
 ### Layouts
 
@@ -36,7 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # this is the new step
-      - uses: toko-bifrost/ms-teams-deploy-card@master #  or "./" if in a local set-up
+      - uses: jjchiw/ms-teams-deploy-card@master #  or "./" if in a local set-up
         if: always()
         with:
           github-token: ${{ github.token }}
@@ -94,7 +105,7 @@ jobs:
 - If you are going to set `custom-facts` (only for `complete` layout) and `custom-actions` (on both `cozy` and `complete` layout), look out for the pipe symbol (`|`). Github Actions only accept `string`, `number`, and `boolean` as parameters on job steps. To bypass this restriction and to instill YAML list formatting, we have to set it with a YAML-parseable multiline string containing a YAML list of objects with `name` and `value` on `custom-facts`, and `text` and `url` (i.e. must be a valid URI format) on `custom-actions`. If there is an error in YAML parsing, no custom facts/actions will be appended.
 
 ```yaml
-- uses: toko-bifrost/ms-teams-deploy-card@master
+- uses: jjchiw/ms-teams-deploy-card@master
   with:
     github-token: ${{ github.token }}
     webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
