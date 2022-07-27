@@ -1,7 +1,5 @@
 # Microsoft Teams Deploy Card
 
-![MS Teams Deploy Card](https://github.com/jjchiw/ms-teams-deploy-card/workflows/MS%20Teams%20Deploy%20Card/badge.svg)
-
 A comprehensive notification card in Microsoft Teams for your deployments.
 
 This is a fork of a fork...
@@ -11,9 +9,9 @@ https://github.com/toko-bifrost/ms-teams-deploy-card
 
 Then there was an issue with the notifications [Stays IN_PROGRESS even if SUCCESS or has FAILED](https://github.com/toko-bifrost/ms-teams-deploy-card/issues/42)
 
-So @patrickpaulin make a fork a fix it https://github.com/patrickpaulin/ms-teams-deploy-card
+So @patrickpaulin make a fork and fix it https://github.com/patrickpaulin/ms-teams-deploy-card
 
-I Just forked and renamed the action
+I Just forked and renamed the action in order to be public in the marketplace
 
 ### Layouts
 
