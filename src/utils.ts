@@ -180,3 +180,10 @@ export function renderActions(statusUrl: string, diffUrl: string) {
   }
   return actions;
 }
+
+export function toUpperCase(str: string | undefined) {
+  if (!str) {
+    return str;
+  }
+  return str.toUpperCase();
+}

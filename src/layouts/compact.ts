@@ -2,6 +2,7 @@ import { Octokit } from "@octokit/rest";
 import { WebhookBody } from "../models";
 import { getInput } from "@actions/core";
 import { CONCLUSION_THEMES } from "../constants";
+import { toUpperCase } from "../utils";
 
 export function formatCompactLayout(
   commit: Octokit.Response<Octokit.ReposGetCommitResponse>,
@@ -15,15 +16,15 @@ export function formatCompactLayout(
   const webhookBody = new WebhookBody();
 
   // Set status and elapsedSeconds
-  let labels = `\`${conclusion.toUpperCase()}\``;
+  let labels = `\`${toUpperCase(conclusion)}\``;
   if (elapsedSeconds) {
-    labels = `\`${conclusion.toUpperCase()} [${elapsedSeconds}s]\``;
+    labels = `\`${toUpperCase(conclusion)} [${elapsedSeconds}s]\``;
   }
 
   // Set environment name
   const environment = getInput("environment");
   if (environment !== "") {
-    labels += ` \`ENV:${environment.toUpperCase()}\``;
+    labels += ` \`ENV:${toUpperCase(environment)}\``;
   }
 
   // Set themeColor

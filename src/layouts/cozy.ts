@@ -5,7 +5,7 @@ import { getInput } from "@actions/core";
 
 import { WebhookBody } from "../models";
 import { CONCLUSION_THEMES } from "../constants";
-import { renderActions } from "../utils";
+import { renderActions, toUpperCase } from "../utils";
 
 export const OCTOCAT_LOGO_URL =
   "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png";
@@ -24,15 +24,15 @@ export function formatCozyLayout(
   const shortSha = process.env.GITHUB_SHA?.substr(0, 7);
 
   // Set status and elapsedSeconds
-  let labels = `\`${conclusion.toUpperCase()}\``;
+  let labels = `\`${toUpperCase(conclusion)}\``;
   if (elapsedSeconds) {
-    labels = `\`${conclusion.toUpperCase()} [${elapsedSeconds}s]\``;
+    labels = `\`${toUpperCase(conclusion)} [${elapsedSeconds}s]\``;
   }
 
   // Set environment name
   const environment = getInput("environment");
   if (environment !== "") {
-    labels += ` \`ENV:${environment.toUpperCase()}\``;
+    labels += ` \`ENV:${toUpperCase(environment)}\``;
   }
 
   // Set themeColor

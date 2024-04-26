@@ -2,7 +2,7 @@ import { Octokit } from "@octokit/rest";
 import { getInput, warning, info } from "@actions/core";
 import yaml from "yaml";
 
-import { escapeMarkdownTokens, renderActions } from "../utils";
+import { escapeMarkdownTokens, renderActions, toUpperCase } from "../utils";
 import { Fact, PotentialAction } from "../models";
 import { formatCozyLayout } from "./cozy";
 
@@ -52,16 +52,16 @@ export function formatCompleteLayout(
   );
 
   // Set status and elapsedSeconds
-  let labels = `\`${conclusion.toUpperCase()}\``;
+  let labels = `\`${toUpperCase(conclusion)}\``;
   if (elapsedSeconds) {
-    labels = `\`${conclusion.toUpperCase()} [${elapsedSeconds}s]\``;
+    labels = `\`${toUpperCase(conclusion)} [${elapsedSeconds}s]\``;
   }
 
   // Set section facts
   section.facts = [
     new Fact(
       "Event type:",
-      "`" + process.env.GITHUB_EVENT_NAME?.toUpperCase() + "`"
+      "`" + toUpperCase(process.env.GITHUB_EVENT_NAME) + "`"
     ),
     new Fact("Status:", labels),
     new Fact(
@@ -97,7 +97,7 @@ export function formatCompleteLayout(
     section.facts.splice(
       1,
       0,
-      new Fact("Environment:", `\`${environment.toUpperCase()}\``)
+      new Fact("Environment:", `\`${toUpperCase(environment)}\``)
     );
   }
 
